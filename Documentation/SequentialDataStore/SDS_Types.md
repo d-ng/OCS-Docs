@@ -451,7 +451,7 @@ Samples in other languages can be found here: [Samples](https://github.com/osiso
 In the sample code, ``SdsType``, ``SdsTypeProperty``, and ``SdsTypeCode`` are defined as in the code snippets shown here:
 
 **Python**
-
+```python
       class SdsTypeCode(Enum):
           Empty = 0
           Object = 1
@@ -523,11 +523,11 @@ In the sample code, ``SdsType``, ``SdsTypeProperty``, and ``SdsTypeCode`` are de
           @Properties.setter
           def Properties(self, properties):
               self.__properties = properties
-
+```
 
 
 **JavaScript**
-
+```javascript
       SdsTypeCodeMap: {
           Empty: 0,
           "Object": 1,
@@ -569,14 +569,14 @@ In the sample code, ``SdsType``, ``SdsTypeProperty``, and ``SdsTypeCode`` are de
               this.Properties = SdsType.Properties;
           }
       },
-
+```
 
 
 Working with the following types (both Python and JavaScript classes are shown):
 
 
 **Python**
-
+```python
       class State(Enum):
           Ok = 0
           Warning = 1
@@ -600,10 +600,10 @@ Working with the following types (both Python and JavaScript classes are shown):
               return self.__measurement
           def setMeasurement(self, measurement):
               self.__measurement = measurement
-
+```
 
 **JavaScript**
-
+``javascript
       var State =
         {
             Ok: 0,
@@ -616,12 +616,12 @@ Working with the following types (both Python and JavaScript classes are shown):
             this.State = null;
             this.Measurement = null;
         }
-
+```
 
 Define the SdsType as follows:
 
 **Python**
-
+```python
       # Create the properties
 
       # Time is the primary key
@@ -671,10 +671,10 @@ Define the SdsType as follows:
       simpleType.Description = "Basic sample type"
       simpleType.SdsTypeCode = SdsTypeCode.Object
       simpleType.Properties = [ time ]
-
+```
 
 **JavaScript**
-
+```javascript
       // Time is the primary key
       var timeProperty = new SdsObjects.SdsTypeProperty({
           "Id": "Time",
@@ -736,12 +736,12 @@ Define the SdsType as follows:
           @Observation.setter
           def Observation(self, observation):
               self.__observation = observation
-
+```
 
 Extend the SdsType as follows:
 
 **Python**
-
+```python
       # Observation property is a simple non-inexed, standard data type
       observation = SdsTypeProperty()
       observation.Id = "Observation"
@@ -759,10 +759,10 @@ Extend the SdsType as follows:
       derived.BaseType = simpleType # Set the base type to the derived type
       derived.SdsTypeCode = SdsTypeCode.Object
       derived.Properties = [ observation ]
-
+```
 
 **JavaScript**
-
+```javascript
       var observationProprety = new SdsObjects.SdsTypeProperty({
           "Id": "Observation",
           "SdsType": new SdsObjects.SdsType({
@@ -779,7 +779,7 @@ Extend the SdsType as follows:
           "SdsTypeCode": SdsObjects.SdsTypeCodeMap.Object,
           "Properties": [ observationProprety ]
       });
-
+```
 
 SdsType API
 ----------
@@ -838,7 +838,6 @@ The response includes a status code and a response body.
                "Name":"Time",
                "IsKey":true,
                "SdsType":{  
-                  "$id":"567",
                   "Id":"19a87a76-614a-385b-ba48-6f8b30ff6ab2",
                   "Name":"DateTime",
                   "SdsTypeCode":16
@@ -854,17 +853,14 @@ The response includes a status code and a response body.
                   "SdsTypeCode":609,
                   "Properties":[  
                      {  
-                        "$id":"570",
                         "Id":"Ok",
                         "Value":0
                      },
                      {  
-                        "$id":"571",
                         "Id":"Warning",
                         "Value":1
                      },
                      {  
-                        "$id":"572",
                         "Id":"Aalrm",
                         "Value":2
                      }
@@ -872,7 +868,6 @@ The response includes a status code and a response body.
                }
             },
             {  
-               "$id":"573",
                "Id":"Measurement",
                "Name":"Measurement",
                "SdsType":{  
@@ -951,7 +946,7 @@ If no value is specified, there is no sorting of results.
   A collection of zero or more SdsTypes.
 
   Sample response body:
-
+```json
       HTTP/1.1 200
       Content-Type: application/json
 
@@ -1008,7 +1003,7 @@ If no value is specified, there is no sorting of results.
          },
          …
       ]
-
+```
 
 
 **.NET Library**
@@ -1066,7 +1061,7 @@ The type identifier. The identifier must match the SdsType.Id field.
   that you use JSON.
 
   Sample SdsType content:
-
+```json
       {  
          "Id":"Simple",
          "Name":"Simple",
@@ -1174,14 +1169,14 @@ The type identifier. The identifier must match the SdsType.Id field.
          "BaseType":null,
          "DerivedTypes":null
       }
-
+```
 
 Response
 
 The response includes a status code and a response body.
 
 Response body
-
+```json
       HTTP/1.1 200
       Content-Type: application/json
 
@@ -1238,7 +1233,7 @@ Response body
          ]
       }
 
-
+```
 
 
 **.NET Library**
